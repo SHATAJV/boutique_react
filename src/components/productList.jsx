@@ -1,5 +1,5 @@
 import React from "react";
-import products from "boutique/product.json";
+import products from "../data/pruduct.json";
 
 const ProductList = () => {
   return (

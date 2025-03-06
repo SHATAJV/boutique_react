@@ -1,9 +1,27 @@
 import React, { useState } from "react";
-import products from "../data/pruduct.json";
+import products from "../data/products.json";
+import Cart from "./panier";
 
 const ProductList = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+  const [cart, setCart] = useState([]);
+
+  // Ajouter un produit au panier
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const itemInCart = prevCart.find((item) => item.id === product.id);
+      if (itemInCart) {
+        return prevCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+  };
+
+  // Vider le panier
+  const clearCart = () => setCart([]);
 
   // Filtrer les produits selon la recherche et la catégorie sélectionnée
   const filteredProducts = products.filter(
@@ -15,7 +33,7 @@ const ProductList = () => {
   return (
     <div>
       <h2>Nos Instruments </h2>
-
+      
       {/* Champ de recherche */}
       <input
         type="text"
@@ -31,19 +49,25 @@ const ProductList = () => {
         <option value="Claviers">Claviers</option>
       </select>
 
-      {/* Affichage des produits filtrés */}
+      {/* Liste des produits */}
       <ul>
         {filteredProducts.map((product) => (
           <li key={product.id}>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
             <p>{product.price} €</p>
-            <button>Ajouter au panier</button>
+            <button onClick={() => addToCart(product)}>Ajouter au panier</button>
           </li>
         ))}
       </ul>
+
+      {/* Affichage du panier */}
+      <Cart cart={cart} clearCart={clearCart} />
     </div>
   );
 };
 
 export default ProductList;
+
+
+

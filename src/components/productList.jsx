@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import products from "../data/products.json";
+import products from "../data/pruduct.json";
 import Cart from "./panier";
 
 const ProductList = () => {

@@ -5,7 +5,7 @@ import Order from "./components/order";
 const App = () => {
   return (
     <div>
-      <h1> Boutique d'Instruments </h1>
+      <h1>Boutique d'Instruments </h1>
       <ProductList />
       <Order />
     </div>
@@ -13,3 +13,4 @@ const App = () => {
 };
 
 export default App;
+

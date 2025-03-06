@@ -4,14 +4,16 @@
       "name": "Guitare Acoustique",
       "description": "Une guitare folk en bois massif",
       "price": 299.99,
-      "category": "Guitares"
+      "category": "Guitares",
+      "image": "https://example.com/guitare.jpg"
     },
     {
       "id": 2,
       "name": "Piano Numérique",
       "description": "Un piano électrique 88 touches",
       "price": 599.99,
-      "category": "Claviers"
+      "category": "Claviers",
+      "image": "https://example.com/piano.jpg"
     }
   ]
   
